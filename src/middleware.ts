@@ -4,7 +4,7 @@ export const config = {
     matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
 };
 
-const isPublicRoute = createRouteMatcher(['/signin(.*)', '/signup(.*)', '/']);
+const isPublicRoute = createRouteMatcher(['/signin(.*)', '/signup(.*)', '/', '/api/uploadthing']);
 
 export default clerkMiddleware((auth, req) => {
     if (!isPublicRoute(req)) auth().protect();
