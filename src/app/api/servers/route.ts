@@ -3,6 +3,7 @@ import db from "@/lib/db";
 import { ChannelType, MemberRole } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
+import { serverCreationProps } from "@/lib/zod-props";
 
 export async function POST(req: Request) {
     try {
@@ -11,7 +12,16 @@ export async function POST(req: Request) {
             return new NextResponse("Unauthenticated", { status: 401 });
         }
 
-        const { name, imageUrl } = await req.json();
+        const body = await req.json();
+        const parsedInput = serverCreationProps.safeParse(body);
+        if (!parsedInput.success) {
+            return NextResponse.json(
+                { message: parsedInput.error },
+                { status: 400 }
+            );
+        }
+
+        const { name, imageUrl } = parsedInput.data;
         const server = await db.server.create({
             data: {
                 profileId: profile.id,

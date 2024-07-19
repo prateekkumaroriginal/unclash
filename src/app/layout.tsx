@@ -1,16 +1,11 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
-} from '@clerk/nextjs'
+import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { cn } from "@/lib/utils";
+import { dark } from "@clerk/themes";
+import { ModalProvider } from "@/components/providers/modal-provider";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -28,18 +23,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{
+      baseTheme: dark
+    }}>
       <html lang="en" suppressHydrationWarning>
-        <body className={cn(
-          nunito.className,
-          "light:bg-[#f1f1f1] dark:bg-[#1d1e21]"
-        )}>
+        <body className={nunito.className}>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem
             storageKey="unclash-theme"
           >
+            <ModalProvider />
             {children}
           </ThemeProvider>
         </body>

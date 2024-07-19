@@ -26,9 +26,13 @@ import {
 } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
 import { serverCreationProps } from "@/lib/zod-props";
+import { useModal } from "@/hooks/use-modal-store";
 
-export const InitialModal = () => {
+export const CreateServerModal = () => {
+    const { type, isOpen, onClose } = useModal();
     const router = useRouter();
+
+    const isModalOpen = isOpen && type === "createServer";
 
     const form = useForm({
         resolver: zodResolver(serverCreationProps),
@@ -45,14 +49,19 @@ export const InitialModal = () => {
             axios.post("/api/servers", values);
             reset();
             router.refresh();
-            window.location.reload();
+            onClose();
         } catch (error) {
             console.log(error);
         }
     }
 
+    const handleClose = () => {
+        reset();
+        onClose();
+    }
+
     return (
-        <Dialog open>
+        <Dialog open={isModalOpen} onOpenChange={handleClose}>
             <DialogContent className="bg-[#f1f1f1] text-black py-8 px-6 dark:bg-[#1f1f23] dark:text-white">
                 <DialogHeader>
                     <DialogTitle className="text-3xl font-semibold text-center">Create your own Server</DialogTitle>
