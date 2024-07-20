@@ -1,9 +1,9 @@
 import { create } from "zustand";
 
-export type modalType = "createServer" | null;
+export type modalType = "createServer";
 
 interface modalStore {
-    type: modalType,
+    type: modalType | null,
     isOpen: boolean,
     onOpen: (type: modalType) => void,
     onClose: () => void

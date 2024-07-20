@@ -11,7 +11,7 @@ import { UserButton } from "@clerk/nextjs";
 const MainSidebar = async () => {
     const profile = await currentProfile();
     if (!profile) {
-        return redirect("/");
+        return redirect("/signin");
     }
 
     const servers = await db.server.findMany({
