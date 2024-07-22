@@ -7,9 +7,9 @@ import { serverCreationProps } from "@/lib/zod-props";
 
 export async function POST(req: Request) {
     try {
-        const profile = await currentProfile();
+        const { profile } = await currentProfile();
         if (!profile) {
-            return new NextResponse("Unauthenticated", { status: 401 });
+            return new NextResponse("Unauthorized", { status: 401 });
         }
 
         const body = await req.json();

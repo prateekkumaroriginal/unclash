@@ -1,7 +1,7 @@
 import { currentProfile } from "@/lib/current-profile";
 import db from "@/lib/db";
+import { serverCreationProps } from "@/lib/zod-props";
 import { NextResponse } from "next/server";
-import { v4 as uuidv4 } from "uuid";
 
 export async function PATCH(
     req: Request,
@@ -13,19 +13,29 @@ export async function PATCH(
             return new NextResponse("Unauthorized", { status: 401 });
         }
 
+        const body = await req.json();
+        const parsedInput = serverCreationProps.safeParse(body);
+        if (!parsedInput.success) {
+            return NextResponse.json(
+                { message: parsedInput.error },
+                { status: 400 }
+            );
+        }
+
         const server = await db.server.update({
             where: {
                 id: params.serverId,
                 profileId: profile.id
             },
             data: {
-                inviteCode: uuidv4()
+                name: parsedInput.data.name,
+                imageUrl: parsedInput.data.imageUrl
             }
         });
 
         return NextResponse.json(server);
     } catch (error) {
-        console.log("[SERVER_ID]", error);
-        return new NextResponse("Internal server error", { status: 500 });
+        console.log("[SERVER_ID_PATCH]", error);
+        return new NextResponse("Internal Server Error", { status: 500 });
     }
 }
