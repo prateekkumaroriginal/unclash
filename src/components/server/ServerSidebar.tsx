@@ -9,9 +9,9 @@ interface serverSidebarProps {
 }
 
 const ServerSidebar = async ({ serverId }: serverSidebarProps) => {
-    const profile = await currentProfile();
+    const { profile, redirectToSignIn } = await currentProfile();
     if (!profile) {
-        return redirect("/signin");
+        return redirectToSignIn();
     }
 
     const server = await db.server.findUnique({

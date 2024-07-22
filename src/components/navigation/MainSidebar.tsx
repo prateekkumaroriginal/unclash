@@ -9,9 +9,9 @@ import { ModeToggle } from "../ui/mode-toggle";
 import { UserButton } from "@clerk/nextjs";
 
 const MainSidebar = async () => {
-    const profile = await currentProfile();
+    const { profile, redirectToSignIn } = await currentProfile();
     if (!profile) {
-        return redirect("/signin");
+        return redirectToSignIn();
     }
 
     const servers = await db.server.findMany({

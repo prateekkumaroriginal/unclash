@@ -10,9 +10,9 @@ const ServerPageLayout = async ({
     children: React.ReactNode,
     params: { serverId: string }
 }) => {
-    const profile = await currentProfile();
+    const { profile, redirectToSignIn } = await currentProfile();
     if (!profile) {
-        return redirect("/signin");
+        return redirectToSignIn();
     }
 
     const server = await db.server.findUnique({
