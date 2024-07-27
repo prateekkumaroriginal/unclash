@@ -64,6 +64,7 @@ const ServerHeader = ({
                 )}
                 {isAdmin && (
                     <DropdownMenuItem
+                        onClick={() => onOpen("members", { server })}
                         className="px-3 py-2 focus:bg-indigo-500 focus:text-white dark:focus:text-white text-sm cursor-pointer"
                     >
                         Manage Members <Users className="h-4 w-4 ml-auto" />

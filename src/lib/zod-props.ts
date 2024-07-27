@@ -1,3 +1,4 @@
+import { MemberRole } from "@prisma/client";
 import { z } from "zod";
 
 export const serverCreationProps = z.object({
@@ -7,4 +8,10 @@ export const serverCreationProps = z.object({
         message: "Server name can be of maximum 256 characters!"
     }),
     imageUrl: z.string().url("ImageUrl should be a url!")
+});
+
+export const roleChangeProps = z.object({
+    role: z.enum([MemberRole.GUEST, MemberRole.MODERATOR], {
+        message: "Assignable roles are GUEST and MODERATOR"
+    })
 });
