@@ -20,10 +20,7 @@ const NavigationItem = ({
     const { serverId } = useParams();
 
     return (
-        <div
-            className="mb-4 relative flex items-center"
-            key={id}
-        >
+        <div className="mb-4 relative flex items-center">
             <div className="z-20 absolute left-0 w-1 h-10" />
             <Link
                 href={`/servers/${id}`}

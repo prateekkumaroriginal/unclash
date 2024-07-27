@@ -56,8 +56,8 @@ export const CreateServerModal = () => {
     }
 
     const handleClose = () => {
-        reset();
         onClose();
+        reset();
     }
 
     return (

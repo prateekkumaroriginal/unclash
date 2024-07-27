@@ -201,7 +201,6 @@ export const MembersModal = () => {
                             )}
                         </div>
                     ))}
-
                 </ScrollArea>
             </DialogContent>
         </Dialog>
