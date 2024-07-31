@@ -83,6 +83,7 @@ const ServerHeader = ({
                 )}
                 {isAdmin && (
                     <DropdownMenuItem
+                        onClick={() => onOpen("deleteServer", { server })}
                         className="px-3 py-2 text-red-500 focus:bg-red-500 focus:text-white dark:focus:text-white text-sm cursor-pointer"
                     >
                         Delete Server <Trash2 className="h-4 w-4 ml-auto" />

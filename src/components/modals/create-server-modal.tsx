@@ -46,7 +46,7 @@ export const CreateServerModal = () => {
 
     const onSubmit = async (values: z.infer<typeof serverCreationProps>) => {
         try {
-            axios.post("/api/servers", values);
+            await axios.post("/api/servers", values);
             router.refresh();
             onClose();
             reset();
