@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import {
     Dialog,
     DialogContent,
@@ -26,14 +24,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { channelCreationProps } from "@/lib/zod-props";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { z } from "zod";
 
 export const CreateChannelModal = () => {
     const router = useRouter();
-    const { type, isOpen, onOpen, onClose, data } = useModal();
+    const { type, isOpen, onClose, data } = useModal();
     const { server } = data as { server: serverWithMembersWithProfiles };
 
     const isModalOpen = isOpen && type === "createChannel";
@@ -46,7 +44,7 @@ export const CreateChannelModal = () => {
         }
     });
 
-    const { handleSubmit, control, reset, formState: { isSubmitting } } = form;
+    const { handleSubmit, control, reset, formState: { isSubmitting, isValid } } = form;
 
     const onSubmit = async (values: z.infer<typeof channelCreationProps>) => {
         try {
@@ -132,7 +130,7 @@ export const CreateChannelModal = () => {
                                     type="submit"
                                     variant="primary"
                                     className="w-full"
-                                    disabled={isSubmitting}
+                                    disabled={isSubmitting || !isValid}
                                 >
                                     Create
                                 </Button>
