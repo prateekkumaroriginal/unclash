@@ -1,6 +1,5 @@
 import { currentProfile } from "@/lib/current-profile";
 import db from "@/lib/db";
-import { redirect } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
 import NavigationAddServer from "./NavigationAddServer";
 import NavigationItem from "./NavigationItem";
