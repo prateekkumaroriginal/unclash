@@ -28,11 +28,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
 import { z } from "zod";
+import { useEffect } from "react";
 
 export const CreateChannelModal = () => {
     const router = useRouter();
     const { type, isOpen, onClose, data } = useModal();
     const { server } = data as { server: serverWithMembersWithProfiles };
+    const { channelType } = data;
 
     const isModalOpen = isOpen && type === "createChannel";
 
@@ -40,9 +42,15 @@ export const CreateChannelModal = () => {
         resolver: zodResolver(channelCreationProps),
         defaultValues: {
             name: "",
-            type: ChannelType.TEXT
+            type: channelType || ChannelType.TEXT
         }
     });
+
+    useEffect(() => {
+        if (channelType) {
+            form.setValue("type", channelType);
+        }
+    }, [channelType, form]);
 
     const { handleSubmit, control, reset, formState: { isSubmitting, isValid } } = form;
 
