@@ -58,7 +58,10 @@ const ChannelItem = ({
             {name !== "general" && role !== MemberRole.GUEST && (
                 <div className="ml-auto flex items-center gap-x-2">
                     <ActionTooltip label="Edit" side="top" align="center">
-                        <Edit className="hidden group-hover:block h-4 w-4 text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition" />
+                        <Edit
+                            onClick={() => onOpen("editChannel", { server, channelType: type, channelData: { id, name } })}
+                            className="hidden group-hover:block h-4 w-4 text-zinc-500 hover:text-zinc-600 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
+                        />
                     </ActionTooltip>
                     <ActionTooltip label="Delete" side="top" align="center">
                         <Trash2
