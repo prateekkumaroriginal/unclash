@@ -1,9 +1,9 @@
 "use client";
 
 import { Plus } from "lucide-react";
-import ChannelItem from "./ChannelItem";
+import ChannelItem from "@/components/server/ChannelItem";
 import { ChannelType, MemberRole } from "@prisma/client";
-import { ActionTooltip } from "../action-tooltip";
+import { ActionTooltip } from "@/components/action-tooltip";
 import { useModal } from "@/hooks/use-modal-store";
 import { serverWithMembersWithProfiles } from "@/lib/types";
 
@@ -52,6 +52,7 @@ const ServerChannelSection = ({
                     <ChannelItem
                         key={id}
                         id={id}
+                        server={server}
                         name={name}
                         type={type}
                         role={role}

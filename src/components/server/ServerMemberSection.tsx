@@ -1,12 +1,11 @@
 "use client";
 
-import { Cog, Plus } from "lucide-react";
-import ChannelItem from "./ChannelItem";
-import { ChannelType, Member, MemberRole } from "@prisma/client";
-import { ActionTooltip } from "../action-tooltip";
+import { Cog } from "lucide-react";
+import { MemberRole } from "@prisma/client";
+import { ActionTooltip } from "@/components/action-tooltip";
 import { useModal } from "@/hooks/use-modal-store";
 import { memberWithProfile, serverWithMembersWithProfiles } from "@/lib/types";
-import MemberItem from "./MemberItem";
+import MemberItem from "@/components/server/MemberItem";
 
 interface serverMemberSectionProps {
     name: string;

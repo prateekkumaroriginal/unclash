@@ -1,12 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChannelType, Member, MemberRole } from "@prisma/client";
-import { Edit, Hash, Lock, Mic, ShieldAlert, ShieldCheck, Trash2, Video } from "lucide-react";
+import { MemberRole } from "@prisma/client";
+import { ShieldAlert, ShieldCheck } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
-import { ActionTooltip } from "../action-tooltip";
 import { memberWithProfile } from "@/lib/types";
-import UserAvatar from "../user-avatar";
+import UserAvatar from "@/components/user-avatar";
 
 interface channelItemProps {
     member: memberWithProfile;

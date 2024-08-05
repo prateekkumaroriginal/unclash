@@ -3,12 +3,12 @@ import db from "@/lib/db";
 import { ChannelType, MemberRole } from "@prisma/client";
 import { redirect } from "next/navigation";
 import ServerHeader from "@/components/server/ServerHeader";
-import { ScrollArea } from "../ui/scroll-area";
-import ServerSearch from "./ServerSearch";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import ServerSearch from "@/components/server/ServerSearch";
 import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from "lucide-react";
-import { Separator } from "../ui/separator";
-import ServerChannelSection from "./ServerChannelSection";
-import ServerMemberSection from "./ServerMemberSection";
+import { Separator } from "@/components/ui/separator";
+import ServerChannelSection from "@/components/server/ServerChannelSection";
+import ServerMemberSection from "@/components/server/ServerMemberSection";
 
 interface serverSidebarProps {
     serverId: string

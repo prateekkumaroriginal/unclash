@@ -23,7 +23,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { channelCreationProps } from "@/lib/zod-props";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
@@ -118,12 +118,12 @@ export const CreateChannelModal = () => {
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
-                                                {Object.values(ChannelType).map(channelType => (
+                                                {Object.values(ChannelType).map(type => (
                                                     <SelectItem
-                                                        key={channelType}
-                                                        value={channelType}
+                                                        key={type}
+                                                        value={type}
                                                     >
-                                                        {channelType}
+                                                        {type}
                                                     </SelectItem>
                                                 ))}
                                             </SelectContent>

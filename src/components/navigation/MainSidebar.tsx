@@ -1,8 +1,8 @@
 import { currentProfile } from "@/lib/current-profile";
 import db from "@/lib/db";
 import { Separator } from "@/components/ui/separator";
-import NavigationAddServer from "./NavigationAddServer";
-import NavigationItem from "./NavigationItem";
+import NavigationAddServer from "@/components/navigation/NavigationAddServer";
+import NavigationItem from "@/components/navigation/NavigationItem";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { UserButton } from "@clerk/nextjs";
