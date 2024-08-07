@@ -1,15 +1,47 @@
-"use client"
+import { currentProfile } from "@/lib/current-profile";
+import db from "@/lib/db";
+import { redirect } from "next/navigation";
 
-import { useParams } from "next/navigation";
-
-const ServerPage = () => {
-    const { serverId } = useParams();
-
-    return (
-        <div>
-            Server ID Page
-        </div>
-    );
+interface serverIdPageProps {
+    params: {
+        serverId: string
+    }
 }
 
-export default ServerPage;
+const ServerIdPage = async ({ params }: serverIdPageProps) => {
+    const { profile, redirectToSignIn } = await currentProfile();
+    if (!profile) {
+        return redirectToSignIn();
+    }
+
+    const server = await db.server.findUnique({
+        where: {
+            id: params.serverId,
+            members: {
+                some: {
+                    profileId: profile.id
+                }
+            }
+        },
+        include: {
+            channels: {
+                where: {
+                    name: "general"
+                },
+                orderBy: {
+                    createdAt: "asc"
+                }
+            }
+        }
+    });
+
+    const initialChannel = server?.channels[0];
+
+    if (initialChannel?.name !== "general") {
+        return null;
+    }
+
+    return redirect(`/servers/${params.serverId}/channels/${initialChannel?.id}`);
+}
+
+export default ServerIdPage;
