@@ -32,7 +32,9 @@ const ServerPageLayout = async ({
 
     return (
         <div className="h-full">
-            <ServerSidebar serverId={params.serverId} />
+            <div className="invisible md:visible md:flex">
+                <ServerSidebar serverId={params.serverId} />
+            </div>
 
             <main className="h-full md:pl-60">
                 {children}

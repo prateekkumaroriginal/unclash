@@ -68,7 +68,7 @@ const ServerSidebar = async ({ serverId }: serverSidebarProps) => {
     }
 
     return (
-        <div className="invisible md:visible md:flex flex-col fixed inset-y-0 w-60 z-20 bg-[#f2f3f5] dark:bg-[#2b2d31]">
+        <div className="flex flex-col fixed inset-y-0 w-60 z-20 bg-[#f2f3f5] dark:bg-[#2b2d31]">
             <ServerHeader
                 server={server}
                 role={role}

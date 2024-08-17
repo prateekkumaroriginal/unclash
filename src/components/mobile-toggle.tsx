@@ -13,21 +13,21 @@ import ServerSidebar from "./server/ServerSidebar";
 
 const MobileToggle = ({ serverId }: { serverId: string }) => {
     return (
-        <div>
-            <Sheet>
-                <SheetTrigger asChild>
-                    <Button size="icon" variant="ghost" className="md:hidden">
-                        <Menu />
-                    </Button>
-                </SheetTrigger>
-                <SheetContent side="left" className="p-0 flex gap-0">
-                    <div>
-                        <MainSidebar />
-                    </div>
+        <Sheet>
+            <SheetTrigger asChild>
+                <Button size="icon" variant="ghost" className="md:hidden">
+                    <Menu />
+                </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="p-0 flex gap-0 w-fit">
+                <div>
+                    <MainSidebar />
+                </div>
+                <div className="pl-[72px]">
                     <ServerSidebar serverId={serverId} />
-                </SheetContent>
-            </Sheet>
-        </div>
+                </div>
+            </SheetContent>
+        </Sheet>
     );
 }
 
