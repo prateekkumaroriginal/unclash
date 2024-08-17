@@ -24,7 +24,7 @@ const MainSidebar = async () => {
     });
 
     return (
-        <nav className="hidden md:flex flex-col fixed h-full w-[72px] z-30 inset-y-0 pt-3 mb-3 bg-[#e3e5e8] dark:bg-[#1e1f22]">
+        <nav className="invisible md:visible md:flex flex-col fixed h-full w-[72px] z-30 inset-y-0 pt-3 mb-3 bg-[#e3e5e8] dark:bg-[#1e1f22]">
             <NavigationAddServer />
             <Separator
                 className="h-[2px] rounded-md bg-zinc-300 dark:bg-zinc-700 w-10 mx-auto my-4"
