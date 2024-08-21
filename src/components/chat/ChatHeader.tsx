@@ -1,5 +1,6 @@
 import { Hash, Menu } from "lucide-react";
 import MobileToggle from "../mobile-toggle";
+import UserAvatar from "../user-avatar";
 
 interface ChatHeaderProps {
     serverId: string;
@@ -22,6 +23,11 @@ const ChatHeader = ({
             {type === "channel" && (
                 <Hash className="w-5 h-5 text-zinc-500 dark:text-zinc-400 mr-2" />
             )}
+
+            {type === "conversation" && (
+                <UserAvatar src={imageUrl} className="h-6 w-6 md:h-8 md:w-8 mr-2" />
+            )}
+
             <p className="font-semibold text-md text-black dark:text-white">
                 {name}
             </p>
