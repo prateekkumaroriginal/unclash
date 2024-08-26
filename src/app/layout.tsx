@@ -6,6 +6,7 @@ import './globals.css'
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { dark } from "@clerk/themes";
 import { ModalProvider } from "@/components/providers/modal-provider";
+import { SocketProvider } from "@/components/providers/socket-provider";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -34,11 +35,13 @@ export default function RootLayout({
             enableSystem
             storageKey="unclash-theme"
           >
-            <ModalProvider />
-            {children}
+            <SocketProvider>
+              <ModalProvider />
+              {children}
+            </SocketProvider>
           </ThemeProvider>
         </body>
       </html>
-    </ClerkProvider>
+    </ClerkProvider >
   )
 }

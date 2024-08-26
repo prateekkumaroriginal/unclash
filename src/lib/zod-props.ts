@@ -29,3 +29,7 @@ export const channelCreationProps = z.object({
         message: "Available channel types are TEXT, AUDIO and VIDEO"
     })
 });
+
+export const chatInputProps = z.object({
+    content: z.string().min(1)
+});
