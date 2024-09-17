@@ -2,7 +2,7 @@ import db from "./db"
 
 export const getOrCreateConversation = async (memberOneId: string, memberTwoId: string) => {
     try {
-        let conversation = await findConveration(memberOneId, memberTwoId) || await findConveration(memberTwoId, memberOneId);
+        let conversation = await findConversation(memberOneId, memberTwoId) || await findConversation(memberTwoId, memberOneId);
 
         if (!conversation) {
             conversation = await createNewConversation(memberOneId, memberTwoId);
@@ -10,11 +10,12 @@ export const getOrCreateConversation = async (memberOneId: string, memberTwoId: 
 
         return conversation;
     } catch (error) {
-
+        console.log(error);
+        return null;
     }
 }
 
-const findConveration = async (memberOneId: string, memberTwoId: string) => {
+const findConversation = async (memberOneId: string, memberTwoId: string) => {
     try {
         return await db.conversation.findUnique({
             where: {
