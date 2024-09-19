@@ -36,7 +36,7 @@ const ChatMessages = ({
     paramValue,
     type
 }: ChatMessagesProps) => {
-    const queryKey = `channel:${chatId}`;
+    const queryKey = `${type}:${chatId}`;
 
     const chatRef = useRef(null);
     const bottomRef = useRef(null);
