@@ -17,7 +17,8 @@ const NavigationItem = ({
     id,
     imageUrl
 }: navigationItemProps) => {
-    const { serverId } = useParams();
+    const params = useParams();
+    const serverId = typeof params?.serverId === "string" ? params.serverId : null;
 
     return (
         <div className="mb-4 relative flex items-center">
