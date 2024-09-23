@@ -4,7 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+/yarn-error.log
 .yarn/install-state.gz
+.yarn/cache/*
 
 # testing
 /coverage
@@ -23,7 +25,6 @@
 # debug
 npm-debug.log*
 yarn-debug.log*
-yarn-error.log*
 
 # local env files
 .env*.local
