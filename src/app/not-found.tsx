@@ -2,7 +2,7 @@ import React from 'react'
 
 export const runtime = 'edge';
 
-const NotFoundPage = () => {
+const NotFound = () => {
   return (
     <div className='h-full flex items-center justify-center'>
       404 - Not Found
@@ -10,4 +10,4 @@ const NotFoundPage = () => {
   )
 }
 
-export default NotFoundPage
+export default NotFound
