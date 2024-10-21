@@ -5,6 +5,8 @@ import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 import { serverCreationProps } from "@/lib/zod-props";
 
+export const runtime = 'edge';
+
 export async function POST(req: Request) {
     try {
         const { profile } = await currentProfile();

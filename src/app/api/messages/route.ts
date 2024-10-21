@@ -3,6 +3,8 @@ import db from "@/lib/db";
 import { Message } from "@prisma/client";
 import { NextResponse } from "next/server";
 
+export const runtime = 'edge';
+
 const MESSAGES_BATCH = 10;
 
 export async function GET(req: Request) {

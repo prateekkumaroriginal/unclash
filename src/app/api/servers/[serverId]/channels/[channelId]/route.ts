@@ -4,6 +4,8 @@ import { channelCreationProps } from "@/lib/zod-props";
 import { MemberRole } from "@prisma/client";
 import { NextResponse } from "next/server";
 
+export const runtime = 'edge';
+
 export async function DELETE(
     req: Request,
     { params }: { params: { serverId: string, channelId: string } }

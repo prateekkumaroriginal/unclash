@@ -4,6 +4,8 @@ import { NextApiResponseServerIO } from "@/lib/types";
 import { MemberRole } from "@prisma/client";
 import { NextApiRequest } from "next";
 
+export const runtime = 'edge';
+
 export default async function handler(req: NextApiRequest, res: NextApiResponseServerIO) {
     if (req.method !== "DELETE" && req.method !== "PATCH") {
         return res.status(405).json({ error: "Method not allowed" });

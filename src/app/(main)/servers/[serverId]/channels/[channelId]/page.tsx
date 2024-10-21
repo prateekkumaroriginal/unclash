@@ -7,6 +7,8 @@ import db from "@/lib/db";
 import { ChannelType } from "@prisma/client";
 import { redirect } from "next/navigation";
 
+export const runtime = 'edge';
+
 interface ChannelIdPageProps {
     params: {
         serverId: string;

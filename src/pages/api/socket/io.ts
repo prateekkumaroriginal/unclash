@@ -3,6 +3,8 @@ import { NextApiRequest } from 'next';
 import { Server as ServerIO } from 'socket.io';
 import { NextApiResponseServerIO } from '@/lib/types';
 
+export const runtime = 'edge';
+
 export const config = {
     api: {
         bodyParser: false

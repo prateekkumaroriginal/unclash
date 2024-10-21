@@ -3,6 +3,7 @@ import db from "@/lib/db";
 import { roleChangeProps } from "@/lib/zod-props";
 import { NextResponse } from "next/server";
 
+export const runtime = 'edge';
 
 export async function PATCH(
     req: Request,

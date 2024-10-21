@@ -3,6 +3,8 @@ import db from "@/lib/db";
 import { NextApiResponseServerIO } from "@/lib/types";
 import { NextApiRequest } from "next";
 
+export const runtime = 'edge';
+
 export default async function handler(req: NextApiRequest, res: NextApiResponseServerIO) {
     if (req.method !== "POST") {
         return res.status(405).json({ message: "Method not allowed" });
