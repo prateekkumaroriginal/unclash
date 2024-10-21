@@ -3,6 +3,8 @@ import { initialProfile } from "@/lib/initial-profile"
 import { redirect } from "next/navigation";
 import { InitialModal } from "@/components/modals/initial-modal";
 
+export const runtime = 'edge';
+
 const SetupPage = async () => {
     const profile = await initialProfile();
 
